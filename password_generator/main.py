@@ -95,18 +95,28 @@ def user_inputs():
     symbol_user = "yes"
     number_user = "yes"
     space_user = 'no'
-    
-    list_of_sets = [upper_case_user, lower_case_user, symbol_user, number_user, space_user]
-    
-    j = 1
-    for i in list_of_sets:
-        while j==1:
-            i =  input(f"Do you want to use 'upper case' in the password? [*enter-> option = {input_defult['y']}] ") or i
-            
-            if i in ['yes', 'no', "  "]:
-                j = 0
 
 
+
+    dict_of_sets = {'upper_case_user' : "upper case",
+     "lower_case_user": "lower case", 
+     "symbol_user" : "sumbol",
+      "number_user" : "number",
+       "space_user" : "space"}
+    
+    list_of_sets = [[upper_case_user, "yes"], [lower_case_user , "yes"]]
+
+    z = 0
+    
+    for key, value in dict_of_sets.items():
+
+        dict_of_sets[key] =  input(f"Do you want to use '{list(dict_of_sets.values())[z]}' in the password? [*enter-> option = {input_defult['y']}] ") or i
+        
+
+        z+=1
+
+    print(dict_of_sets)
+   
 
     
 
