@@ -98,33 +98,30 @@ def user_inputs():
         "number" : "yes",
         "space" : 'no'}
     
-    #############
+        
     j = 1
     while j == 1:
+
         length_pass_user = input("Enter legth pass: ") or "8"
 
         if length_pass_user.isnumeric() :
             j = 0
+            for key, value in dict_of_sets_for_input.items():
+
+                while True:
+                    dict_of_sets_for_input[key] =  (input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ")).lower() or value
+
+                    if dict_of_sets_for_input[key] in ['yes', "no"]:
+                        break
+
+                    else:
+                        print("Invalid input. Enter 'Yes' or 'No'\n")
 
         else: print("Invalid input. Only number.\n")
-    ###############
 
-    
-    for key, value in dict_of_sets_for_input.items():
-        
-        j = 1
-        while j == 1:
-            
 
-            dict_of_sets_for_input[key] =  (input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ")).lower() or value
-
-            if dict_of_sets_for_input[key] in ['yes', "no"]:
-                j = 0
-
-            else:
-                j=1
-                print("Invalid input. Enter 'Yes' or 'No'\n")
-
+                
+    print(dict_of_sets_for_input)
 
 
 
