@@ -113,7 +113,7 @@ def user_inputs():
         while j == 1:
             
 
-            dict_of_sets_for_input[key] =  input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ") or value
+            dict_of_sets_for_input[key] =  (input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ")).lower() or value
 
             if dict_of_sets_for_input[key] in ['yes', "no"]:
                 j = 0
@@ -130,11 +130,7 @@ def user_inputs():
     symbol_user = dict_of_sets_for_input["symbol"]
     number_user = dict_of_sets_for_input["number"]
     space_user = dict_of_sets_for_input["space"]
-        
-
-
-    print(dict_of_sets_for_input)
-   
+           
 
     
 
