@@ -105,6 +105,8 @@ def user_inputs():
 
         if length_pass_user.isnumeric() :
             j = 0
+
+        else: print("Invalid input. Only number.\n")
     ###############
 
     for key, value in dict_of_sets_for_input.items():
@@ -120,6 +122,7 @@ def user_inputs():
 
             else:
                 j=1
+                print("Invalid input. Enter 'Yes' or 'No'\n")
 
 
 
