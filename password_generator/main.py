@@ -88,7 +88,7 @@ def creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_us
 
 
 def user_inputs():
-    input_defult = {"y" : "yes", "n" : "no", "lenght" : "8"}
+    
     length_pass_user = 8
     upper_case_user = "yes"
     lower_case_user = "yes"
@@ -98,22 +98,30 @@ def user_inputs():
 
 
 
-    dict_of_sets = {'upper_case_user' : "upper case",
-     "lower_case_user": "lower case", 
-     "symbol_user" : "sumbol",
-      "number_user" : "number",
-       "space_user" : "space"}
+    dict_of_sets = {"upper case" : "yes",
+     "lower case": "yes", 
+     "sumbol" : "yes",
+      "number" : "yes",
+       "space" : 'no'}
     
     list_of_sets = [[upper_case_user, "yes"], [lower_case_user , "yes"]]
 
-    z = 0
+    
     
     for key, value in dict_of_sets.items():
+        #print("fddfdfdffdfdfd")
+        j = 1
+        while j == 1:
+            dict_of_sets[key] =  input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ") or value
 
-        dict_of_sets[key] =  input(f"Do you want to use '{list(dict_of_sets.values())[z]}' in the password? [*enter-> option = {input_defult['y']}] ") or i
+            if dict_of_sets[key] in ['yes', "no"]:
+                j = 0
+            else:
+                j=1
+
+        
         
 
-        z+=1
 
     print(dict_of_sets)
    
