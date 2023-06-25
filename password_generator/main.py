@@ -1,6 +1,6 @@
 import random
 import string
-#بهینه سازی و تحلیل کد*****************
+#بهینه سازی کد*****************
 def welcome_message():
     print('='*51,"\n Welcome to the Random Password Generator program.\n",'='*51 ,sep= '')
     user_inputs()
@@ -109,6 +109,7 @@ def user_inputs():
         else: print("Invalid input. Only number.\n")
     ###############
 
+    
     for key, value in dict_of_sets_for_input.items():
         
         j = 1
@@ -127,7 +128,7 @@ def user_inputs():
 
 
 
-
+    length_pass_user = "8"
     upper_case_user = dict_of_sets_for_input["upper case"]
     lower_case_user = dict_of_sets_for_input["lower case"]
     symbol_user = dict_of_sets_for_input["symbol"]
