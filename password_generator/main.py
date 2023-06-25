@@ -89,41 +89,51 @@ def creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_us
 
 def user_inputs():
     
-    length_pass_user = 8
-    upper_case_user = "yes"
-    lower_case_user = "yes"
-    symbol_user = "yes"
-    number_user = "yes"
-    space_user = 'no'
 
 
-
-    dict_of_sets = {"upper case" : "yes",
-     "lower case": "yes", 
-     "sumbol" : "yes",
-      "number" : "yes",
-       "space" : 'no'}
+    dict_of_sets_for_input = {
+        "upper case" : "yes",
+        "lower case": "yes", 
+        "symbol" : "yes",
+        "number" : "yes",
+        "space" : 'no'}
     
-    list_of_sets = [[upper_case_user, "yes"], [lower_case_user , "yes"]]
+    #############
+    j = 1
+    while j == 1:
+        length_pass_user = input("Enter legth pass: ") or "8"
 
-    
-    
-    for key, value in dict_of_sets.items():
-        #print("fddfdfdffdfdfd")
+        if length_pass_user.isnumeric() :
+            j = 0
+    ###############
+
+    for key, value in dict_of_sets_for_input.items():
+        
         j = 1
         while j == 1:
-            dict_of_sets[key] =  input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ") or value
+            
 
-            if dict_of_sets[key] in ['yes', "no"]:
+            dict_of_sets_for_input[key] =  input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ") or value
+
+            if dict_of_sets_for_input[key] in ['yes', "no"]:
                 j = 0
+
             else:
                 j=1
 
-        
+
+
+
+
+    upper_case_user = dict_of_sets_for_input["upper case"]
+    lower_case_user = dict_of_sets_for_input["lower case"]
+    symbol_user = dict_of_sets_for_input["symbol"]
+    number_user = dict_of_sets_for_input["number"]
+    space_user = dict_of_sets_for_input["space"]
         
 
 
-    print(dict_of_sets)
+    print(dict_of_sets_for_input)
    
 
     

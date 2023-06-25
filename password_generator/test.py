@@ -1,2 +1,1 @@
-if "yes" in ["no" , "bale" , "yes"]:
-     print("sfdfsdfsd")
+dict_of_sets_for_input
