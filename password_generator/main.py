@@ -102,14 +102,14 @@ def user_inputs():
     j = 1
     while j == 1:
 
-        length_pass_user = input("Enter legth pass: ") or "8"
+        length_pass_user = input("Enter password length: ") or "8"
 
         if length_pass_user.isnumeric() :
             j = 0
             for option, defult in dict_of_sets_for_input.items():
 
                 while True:
-                    dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option = {defult}] ")).lower() or value
+                    dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option = {defult}] ")).lower() or defult
 
                     if dict_of_sets_for_input[option] in ['yes', "no"]:
                         break
@@ -121,11 +121,10 @@ def user_inputs():
 
 
                 
-    print(dict_of_sets_for_input)
 
 
 
-    length_pass_user = "8"
+    
     upper_case_user = dict_of_sets_for_input["upper case"]
     lower_case_user = dict_of_sets_for_input["lower case"]
     symbol_user = dict_of_sets_for_input["symbol"]
