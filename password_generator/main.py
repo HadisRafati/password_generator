@@ -102,7 +102,7 @@ def user_inputs():
             for option, defult in dict_of_sets_for_input.items():
 
                 while True:
-                    dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option = {defult}] ")).lower() or defult
+                    dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option : {defult}] ")).lower() or defult
 
                     if dict_of_sets_for_input[option] in ['yes', "no"]:
                         break

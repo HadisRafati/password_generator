@@ -1,3 +1,3 @@
-sd = list(range(5))
+sd = "" or "hjk"
 
 print(sd)
