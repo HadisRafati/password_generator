@@ -106,12 +106,12 @@ def user_inputs():
 
         if length_pass_user.isnumeric() :
             j = 0
-            for key, value in dict_of_sets_for_input.items():
+            for option, defult in dict_of_sets_for_input.items():
 
                 while True:
-                    dict_of_sets_for_input[key] =  (input(f"Do you want to use '{key}' in the password? [*enter-> option = {value}] ")).lower() or value
+                    dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option = {defult}] ")).lower() or value
 
-                    if dict_of_sets_for_input[key] in ['yes', "no"]:
+                    if dict_of_sets_for_input[option] in ['yes', "no"]:
                         break
 
                     else:
