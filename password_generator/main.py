@@ -1,6 +1,6 @@
 import random
 import string
-#بهینه سازی کد*****************
+
 def welcome_message():
     print('='*51,"\n Welcome to the Random Password Generator program.\n",'='*51 ,sep= '')
     user_inputs()
