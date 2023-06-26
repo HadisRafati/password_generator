@@ -7,22 +7,18 @@ def welcome_message():
 
 
 
-
 def func_upper_case():
-    
     upper_case = random.choice(string.ascii_uppercase)
     return upper_case
 
 
 def func_lower_case():
-    
     lower_case = random.choice(string.ascii_lowercase)
     return lower_case
 
 
 
 def func_symbol():
-
     symbol = random.choice(string.punctuation)
     return symbol
     
@@ -40,7 +36,7 @@ def func_space():
 
 list_of_settings_funcs = [func_upper_case, func_lower_case, func_symbol, func_number, func_space]
 
-def re_creat_password_old_settings(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user):
+def re_creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user):
 
     input_user = input("Enter '1' if you want to Creating a password with new settings, \nEnter '2' if you want to Creating a password with old settings, \nEnter '0' if you want to exit: ").lower()
 
@@ -65,12 +61,12 @@ def creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_us
 
     index_setting = list(range(len(list_of_user_settings))) #[0,1,2,3,4]
     
-    
+    #*********************************************************************
     for i in range(length_pass_user):#5
 
         rand_set = random.choice(index_setting) #2
         index_setting.remove(rand_set) #[0,1,3,4]
-        index_setting.insert(0, rand_set)
+        index_setting.insert(0, rand_set) #[2,0,1,3,4]
     
     
         for y in index_setting:
@@ -78,19 +74,17 @@ def creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_us
                 if list_of_user_settings[y] == "yes":
                     list_pass.append(list_of_settings_funcs[y]())
 
-
+    #*********************************************************************
     
                     
-    password = ''.join(list_pass) #lsit to string password
+    password = ''.join(list_pass) #convert password list to string
     print("\nYour password is: " + password, "\n", '-'*40)
 
-    re_creat_password_old_settings(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user)
+    re_creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user)
 
 
 def user_inputs():
     
-
-
     dict_of_sets_for_input = {
         "upper case" : "yes",
         "lower case": "yes", 
@@ -101,7 +95,6 @@ def user_inputs():
         
     j = 1
     while j == 1:
-
         length_pass_user = input("Enter password length: ") or "8"
 
         if length_pass_user.isnumeric() :
@@ -115,7 +108,7 @@ def user_inputs():
                         break
 
                     else:
-                        print("Invalid input. Enter 'Yes' or 'No'\n")
+                        print("Invalid input. Please enter 'Yes' or 'No'\n")
 
         else: print("Invalid input. Only number.\n")
 

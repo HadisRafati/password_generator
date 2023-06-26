@@ -1,5 +1,3 @@
-j = 1
+sd = list(range(5))
 
-while j == 1 or j ==2:
-    print("he")
-    j += 1
+print(sd)
