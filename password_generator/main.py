@@ -82,6 +82,21 @@ def creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_us
 
     re_creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user)
 
+def set_length_pass_user():
+    j = 1
+    while j == 1:
+        length_pass_user = input("Enter password length: ") or "8" 
+
+        if length_pass_user.isnumeric() :
+            
+            if 4 <= int(length_pass_user) < 30:
+                j = 0
+                return length_pass_user
+            else:print("Invalid input. Length of password beetwen 4 and 30.\n")
+
+        else: print("Invalid input. Please enter only number.\n")
+
+
 
 def user_inputs():
     
@@ -92,30 +107,20 @@ def user_inputs():
         "number" : "yes",
         "space" : 'no'}
     
-        
-    j = 1
-    while j == 1:
-        length_pass_user = input("Enter password length: ") or "8"
+    length_pass_user = set_length_pass_user()
 
-        if length_pass_user.isnumeric() :
-            j = 0
-            for option, defult in dict_of_sets_for_input.items():
+    for option, defult in dict_of_sets_for_input.items():
 
-                while True:
-                    dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option : {defult}] ")).lower() or defult
+        while True:
+            dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option : {defult}] ")).lower() or defult
 
-                    if dict_of_sets_for_input[option] in ['yes', "no"]:
-                        break
+            if dict_of_sets_for_input[option] in ['yes', "no"]:
+                break
 
-                    else:
-                        print("Invalid input. Please enter 'Yes' or 'No'\n")
+            else:
+                print("Invalid input. Please enter 'Yes' or 'No'\n")
 
-        else: print("Invalid input. Only number.\n")
-
-
-                
-
-
+            
 
     
     upper_case_user = dict_of_sets_for_input["upper case"]
@@ -124,9 +129,6 @@ def user_inputs():
     number_user = dict_of_sets_for_input["number"]
     space_user = dict_of_sets_for_input["space"]
            
-
-    
-
 
     creat_password(int(length_pass_user), upper_case_user, lower_case_user, symbol_user, number_user, space_user)
 
