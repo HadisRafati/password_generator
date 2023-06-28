@@ -38,7 +38,9 @@ list_of_settings_funcs = [func_upper_case, func_lower_case, func_symbol, func_nu
 
 def re_creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user):
 
-    input_user = input("Enter '1' if you want to Creating a password with new settings, \nEnter '2' if you want to Creating a password with old settings, \nEnter '0' if you want to exit: ").lower()
+    input_user = input("Enter '1' if you want to Creating a password with new settings," 
+                       "\nEnter '2' if you want to Creating a password with old settings,"
+                       "\nEnter '0' if you want to exit: ").lower()
 
     print()
     if input_user == '2':
@@ -82,17 +84,18 @@ def creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_us
 
     re_creat_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user)
 
-def set_length_pass_user():
+def set_length_pass_user(min_password_length, max_password_length):
+    defult_pass = "8"
     j = 1
     while j == 1:
-        length_pass_user = input("Enter password length: ") or "8" 
+        length_pass_user = input(f"Enter password length [*enter-> defult : {defult_pass}]: ") or defult_pass 
 
         if length_pass_user.isnumeric() :
             
-            if 4 <= int(length_pass_user) < 30:
+            if min_password_length <= int(length_pass_user) < max_password_length:
                 j = 0
                 return length_pass_user
-            else:print("Invalid input. Length of password beetwen 4 and 30.\n")
+            else:print(f"Invalid input. Length of password beetwen {min_password_length} and {max_password_length}.\n")
 
         else: print("Invalid input. Please enter only number.\n")
 
@@ -107,12 +110,16 @@ def user_inputs():
         "number" : "yes",
         "space" : 'no'}
     
-    length_pass_user = set_length_pass_user()
+    min_password_length = 4
+    max_password_length = 30
+
+    length_pass_user = set_length_pass_user(min_password_length, max_password_length) #get password length
 
     for option, defult in dict_of_sets_for_input.items():
 
         while True:
-            dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password? [*enter-> option : {defult}] ")).lower() or defult
+            dict_of_sets_for_input[option] =  (input(f"Do you want to use '{option}' in the password?" 
+                                                f"[*enter-> defult : {defult}] ")).lower() or defult
 
             if dict_of_sets_for_input[option] in ['yes', "no"]:
                 break

@@ -1,3 +1,3 @@
 sd = "" or "hjk"
 
-print(sd)
+print('dsfsdfsf dfg ddgf' f'{sd}')
