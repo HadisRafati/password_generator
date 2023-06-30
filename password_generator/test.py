@@ -1,3 +1,3 @@
-import string
+a = range(4)
 
-print(string.digits)
+print(a)

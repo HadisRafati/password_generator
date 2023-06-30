@@ -2,13 +2,15 @@ import os
 import random
 import string
 ##  تغییر اسم متغیر ها و تمییز نویسی کزدن
-os.system('cls') #clear screen
 
 
 def welcome_message():
+    os.system('cls') #clear screen
+
     print('='*51,"\n Welcome to the Random Password Generator program." ,sep= '')
     print("\n",'_' * 10,"Developer: Hadis Rafati" ,'_' * 10)
     print(" " * 6, "Email: hadisrafati813@gmail.com\n", '='*51, "\n")
+
     user_inputs()
 
 
@@ -40,53 +42,54 @@ def func_space():
 
 
 
-list_of_settings_funcs = [func_upper_case, func_lower_case, func_symbol, func_number, func_space]
+funcs_to_apply_settings = [func_upper_case, func_lower_case, func_symbol, func_number, func_space]
 
 def re_generate_password(length_pass, upper_case, lower_case, symbol, number, space):
 
     defult_setting = "Generate password with old settings"
-    input_user = input("Enter '1' if you want to generating a password with new settings," 
+    user_input = input("Enter '1' if you want to generating a password with new settings,"            #show this str after generate password.
                        "\nEnter '2' if you want to generating a password with old settings,"
                        f"\nEnter '0' if you want to exit \n[*enter-> defult: {defult_setting}]: ").lower() or "2"
 
     print()
-    if input_user == '2':
+    if user_input == '2':
         generate_password(length_pass, upper_case, lower_case, symbol, number, space)
 
-    elif input_user == '0':
-        print("Goodbye My friend!")
+    elif user_input == '0':
+        print("Goodbye My friend!") #exit
     
-    elif input_user == '1':
+    elif user_input == '1':
         user_inputs()
 
 
 
 
-def generate_password(length_pass, upper_case, lower_case, symbol, number, space): #بود یا نبود تنطیمات رو به هم وصل میکنه و استرینگ پسورد رو برمیگردونه
+def generate_password(length_pass, upper_case, lower_case, symbol, number, space): #
     
-    list_pass = [] #["", "","","", ""]
-    list_of_user_settings = [upper_case, lower_case, symbol, number, space]
+    list_of_generated_pass = [] #["", "","","", ""]
+    list_of_pass_settings = [upper_case, lower_case, symbol, number, space]
 
 
-    index_setting = list(range(len(list_of_user_settings))) #[0,1,2,3,4]
+    indexes_of_list_of_settings = list(range(len(list_of_pass_settings))) #[0,1,2,3,4]
     
     #*********************************************************************
-    for i in range(length_pass):#5
+    for i in range(length_pass):#8  #Random selection of settings
 
-        rand_set = random.choice(index_setting) #2
-        index_setting.remove(rand_set) #[0,1,3,4]
-        index_setting.insert(0, rand_set) #[2,0,1,3,4]
+        radomize_option = random.choice(indexes_of_list_of_settings) #2 
+        
+        indexes_of_list_of_settings.remove(radomize_option) #[0,1,3,4]
+        indexes_of_list_of_settings.insert(0, radomize_option) #[2,0,1,3,4]
     
     
-        for y in index_setting:
-            if len(list_pass) < length_pass:
-                if list_of_user_settings[y] == "yes":
-                    list_pass.append(list_of_settings_funcs[y]())
+        for y in indexes_of_list_of_settings:
+            if len(list_of_generated_pass) < length_pass:
+                if list_of_pass_settings[y] == "yes":
+                    list_of_generated_pass.append(funcs_to_apply_settings[y]())
 
     #*********************************************************************
     
                     
-    password = ''.join(list_pass) #convert password list to string
+    password = ''.join(list_of_generated_pass) #convert password list to string
     print("\nYour password is: " + password, "\n", '-'*40)
 
     re_generate_password(length_pass, upper_case, lower_case, symbol, number, space)
