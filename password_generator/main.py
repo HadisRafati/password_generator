@@ -42,7 +42,7 @@ def func_space():
 
 list_of_settings_funcs = [func_upper_case, func_lower_case, func_symbol, func_number, func_space]
 
-def re_generate_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user):
+def re_generate_password(length_pass, upper_case, lower_case, symbol, number, space):
 
     defult_setting = "Generate password with old settings"
     input_user = input("Enter '1' if you want to generating a password with new settings," 
@@ -51,7 +51,7 @@ def re_generate_password(length_pass_user, upper_case_user, lower_case_user, sym
 
     print()
     if input_user == '2':
-        generate_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user)
+        generate_password(length_pass, upper_case, lower_case, symbol, number, space)
 
     elif input_user == '0':
         print("Goodbye My friend!")
@@ -62,16 +62,16 @@ def re_generate_password(length_pass_user, upper_case_user, lower_case_user, sym
 
 
 
-def generate_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user): #بود یا نبود تنطیمات رو به هم وصل میکنه و استرینگ پسورد رو برمیگردونه
+def generate_password(length_pass, upper_case, lower_case, symbol, number, space): #بود یا نبود تنطیمات رو به هم وصل میکنه و استرینگ پسورد رو برمیگردونه
     
     list_pass = [] #["", "","","", ""]
-    list_of_user_settings = [upper_case_user, lower_case_user, symbol_user, number_user, space_user]
+    list_of_user_settings = [upper_case, lower_case, symbol, number, space]
 
 
     index_setting = list(range(len(list_of_user_settings))) #[0,1,2,3,4]
     
     #*********************************************************************
-    for i in range(length_pass_user):#5
+    for i in range(length_pass):#5
 
         rand_set = random.choice(index_setting) #2
         index_setting.remove(rand_set) #[0,1,3,4]
@@ -79,7 +79,7 @@ def generate_password(length_pass_user, upper_case_user, lower_case_user, symbol
     
     
         for y in index_setting:
-            if len(list_pass) < length_pass_user:
+            if len(list_pass) < length_pass:
                 if list_of_user_settings[y] == "yes":
                     list_pass.append(list_of_settings_funcs[y]())
 
@@ -89,7 +89,7 @@ def generate_password(length_pass_user, upper_case_user, lower_case_user, symbol
     password = ''.join(list_pass) #convert password list to string
     print("\nYour password is: " + password, "\n", '-'*40)
 
-    re_generate_password(length_pass_user, upper_case_user, lower_case_user, symbol_user, number_user, space_user)
+    re_generate_password(length_pass, upper_case, lower_case, symbol, number, space)
 
 
 MIN_PASSWORD_LENGTH = 4
@@ -99,13 +99,13 @@ def set_length_pass_user(min_password_length, max_password_length):
     defult_pass = "8"
     j = 1
     while j == 1:
-        length_pass_user = input(f"Enter password length [*enter-> defult: {defult_pass}]: ") or defult_pass 
+        length_pass = input(f"Enter password length [*enter-> defult: {defult_pass}]: ") or defult_pass 
 
-        if length_pass_user.isnumeric() :
+        if length_pass.isnumeric() :
             
-            if min_password_length <= int(length_pass_user) < max_password_length:
+            if min_password_length <= int(length_pass) < max_password_length:
                 j = 0
-                return length_pass_user
+                return length_pass
             else:print(f"Invalid input. Length of password beetwen {min_password_length} and {max_password_length}.\n")
 
         else: print("Invalid input. Please enter only digit.\n")
@@ -122,7 +122,7 @@ def user_inputs():
         "space" : 'no'}
     
 
-    length_pass_user = set_length_pass_user(min_password_length = MIN_PASSWORD_LENGTH, max_password_length = MAX_PASSWORD_LENGTH) #get password length
+    length_pass = set_length_pass_user(min_password_length = MIN_PASSWORD_LENGTH, max_password_length = MAX_PASSWORD_LENGTH) #get password length
 
     for option, defult in dict_for_show_and_get_settings.items(): #show and getting settings
 
@@ -139,14 +139,14 @@ def user_inputs():
             
 
     
-    upper_case_user = dict_for_show_and_get_settings["upper case"]
-    lower_case_user = dict_for_show_and_get_settings["lower case"]
-    symbol_user = dict_for_show_and_get_settings["symbol"]
-    number_user = dict_for_show_and_get_settings["number"]
-    space_user = dict_for_show_and_get_settings["space"]
+    upper_case = dict_for_show_and_get_settings["upper case"]
+    lower_case = dict_for_show_and_get_settings["lower case"]
+    symbol = dict_for_show_and_get_settings["symbol"]
+    number = dict_for_show_and_get_settings["number"]
+    space = dict_for_show_and_get_settings["space"]
            
 
-    generate_password(int(length_pass_user), upper_case_user, lower_case_user, symbol_user, number_user, space_user)
+    generate_password(int(length_pass), upper_case, lower_case, symbol, number, space)
 
 
 
