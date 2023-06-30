@@ -1,3 +1,3 @@
-sd = "" or "hjk"
+import string
 
-print('dsfsdfsf dfg ddgf' f'{sd}')
+print(string.digits)
