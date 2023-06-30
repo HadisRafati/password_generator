@@ -1,7 +1,7 @@
 import os
 import random
 import string
-##  تغییر اسم متغیر ها و تمییز نویسی کزدن
+##تمییز نویسی کزدن
 
 
 def welcome_message():
@@ -140,8 +140,6 @@ def user_inputs():
                 print("Invalid input. Please enter 'Yes' or 'No'\n")
 
             
-
-    
     upper_case = dict_for_show_and_get_settings["upper case"]
     lower_case = dict_for_show_and_get_settings["lower case"]
     symbol = dict_for_show_and_get_settings["symbol"]
@@ -151,8 +149,5 @@ def user_inputs():
 
     generate_password(int(length_pass), upper_case, lower_case, symbol, number, space)
 
-
-
-        
 
 welcome_message()
