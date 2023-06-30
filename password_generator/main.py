@@ -1,7 +1,7 @@
 import os
 import random
 import string
-##تمییز نویسی کزدن
+##  تغییر اسم متغیر ها و تمییز نویسی کزدن
 
 
 def welcome_message():
@@ -73,14 +73,14 @@ def generate_password(length_pass, upper_case, lower_case, symbol, number, space
     indexes_of_list_of_settings = list(range(len(list_of_pass_settings))) #[0,1,2,3,4]
     
     #*********************************************************************
-    for i in range(length_pass):#8  #Random selection of settings
+    while len(list_of_generated_pass) < length_pass:
+        for i in range(length_pass):#8  #Random selection of settings
 
-        radomize_option = random.choice(indexes_of_list_of_settings) #2 
+            radomize_option = random.choice(indexes_of_list_of_settings) #2 
+            
+            indexes_of_list_of_settings.remove(radomize_option) #[0,1,3,4]
+            indexes_of_list_of_settings.insert(0, radomize_option) #[2,0,1,3,4]
         
-        indexes_of_list_of_settings.remove(radomize_option) #[0,1,3,4]
-        indexes_of_list_of_settings.insert(0, radomize_option) #[2,0,1,3,4]
-    
-    
         for y in indexes_of_list_of_settings:
             if len(list_of_generated_pass) < length_pass:
                 if list_of_pass_settings[y] == "yes":
@@ -99,12 +99,13 @@ MIN_PASSWORD_LENGTH = 4
 MAX_PASSWORD_LENGTH = 30
 
 def set_length_pass_user(min_password_length, max_password_length):
-    defult_pass = "8"
+    defult_password_length = "8"
+
     j = 1
     while j == 1:
-        length_pass = input(f"Enter password length [*enter-> defult: {defult_pass}]: ") or defult_pass 
+        length_pass = input(f"Enter password length [*enter-> defult: {defult_password_length}]: ") or defult_password_length 
 
-        if length_pass.isnumeric() :
+        if length_pass.isnumeric():
             
             if min_password_length <= int(length_pass) < max_password_length:
                 j = 0
