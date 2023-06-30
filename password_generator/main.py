@@ -1,7 +1,6 @@
 import os
 import random
 import string
-##  تغییر اسم متغیر ها و تمییز نویسی کزدن
 
 
 def welcome_message():
