@@ -72,14 +72,14 @@ def generate_password(length_pass, upper_case, lower_case, symbol, number, space
     indexes_of_list_of_settings = list(range(len(list_of_pass_settings))) #[0,1,2,3,4]
     
     #*********************************************************************
-    for i in range(length_pass):#8  #Random selection of settings
+    while len(list_of_generated_pass) < length_pass:
+        for i in range(length_pass):#8  #Random selection of settings
 
-        radomize_option = random.choice(indexes_of_list_of_settings) #2 
+            radomize_option = random.choice(indexes_of_list_of_settings) #2 
+            
+            indexes_of_list_of_settings.remove(radomize_option) #[0,1,3,4]
+            indexes_of_list_of_settings.insert(0, radomize_option) #[2,0,1,3,4]
         
-        indexes_of_list_of_settings.remove(radomize_option) #[0,1,3,4]
-        indexes_of_list_of_settings.insert(0, radomize_option) #[2,0,1,3,4]
-        
-    
         for y in indexes_of_list_of_settings:
             if len(list_of_generated_pass) < length_pass:
                 if list_of_pass_settings[y] == "yes":
